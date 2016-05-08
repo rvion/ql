@@ -1,4 +1,4 @@
-docker run -it --rm \
+docker run --rm \
   -v /cache/stack:/root/.stack \
   -v /cache/bin:/root/.local/bin \
   -v ql:/app \
