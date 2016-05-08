@@ -1,7 +1,7 @@
 docker run --rm \
   -v /cache/stack:/root/.stack \
   -v /cache/bin:/root/.local/bin \
-  -v ql/:/app \
+  -v $(pwd)/ql:/app \
   -w /app \
   fpco/stack-build \
   ls
