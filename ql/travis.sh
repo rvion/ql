@@ -5,7 +5,8 @@ docker run -i --rm \
   -v $(pwd)/ql:/app \
   -w /app \
   fpco/stack-build \
-  stack install
+  ls
+echo "ok"
 
 # stack path
 #
