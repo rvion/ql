@@ -1,5 +1,7 @@
 set -eux
 
+VERSION=0.1
+
 echo Building:
 ls ql
 docker run -i --rm \
@@ -11,7 +13,7 @@ docker run -i --rm \
 
 echo Packaging
 ls ql-prod
-docker build -t rvion/ql:2 $(pwd)/ql-prod
+docker build -t rvion/ql:$VERSION $(pwd)/ql-prod
 
 echo Pushing
-docker push rvion/ql:2
+docker push rvion/ql:$VERSION
