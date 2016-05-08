@@ -4,17 +4,20 @@ https://github.com/gambol99/keycloak-proxy
 bin/keycloak-proxy \
     --discovery-url=https://auth.rvion.fr/auth/realms/master \
     --client-id=jenkins \
-    --secret=<SECRET> \
-    --listen=127.0.0.1:3000 \
-    --redirection-url=http://127.0.0.3000 \
+    --secret=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdGClJvxJp00Osfv31gMudEvEQlXQVZ6l9vFvziyCqjWvEzTmZxTsr/vZn/xpoce3TGAW3mHHQXKaHfOLfM7PjCJQeAsawM526HRZI8PQRyQA+5ccEttpiINn/aGi79XhG82mHAEqYYszr1gvza4xaLMoT8wdbYmZIqJRrIvNsg3mLBaLSImEFND/TNFwyuVl0PdRvLWy5EnE1+HLZVRXBOipEx+4icyNRoYaltNHr5z8KZwo8CozJrkALqVtSFoeyVua3FXoFelHgW6+kGBjyM2mlYN9GuRrc0bvJ5h1/RH2qPZVIAjSqZyQjQJ/vMGU2lJeJn+TueKDkMjm7qccwIDAQAB \
+    --listen=:80 \
+    --redirection-url=jenkins:8080 \
     --refresh-sessions=true \
     --encryption-key=AgXa7xRcoClDEU0ZDSH4X0XhL5Qy2Z2j \
+    --resource="uri=/" \
+
     --upstream=http://127.0.0.1:80 \
-    --resource="uri=/admin|methods=GET|roles=test1,test2" \
-    --resource="uri=/backend|roles=test1"
 
 
 ### jenkins options
+
+
+okok
 
 ```
 build-pipeline-plugin
