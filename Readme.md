@@ -22,6 +22,7 @@ bad
 baz
 bob
 bouga
+babaha
 ```
 build-pipeline-plugin
 copyartifact
