@@ -17,12 +17,6 @@ bin/keycloak-proxy \
 ### jenkins options
 
 
-okok
-bad
-baz
-bob
-bouga
-babaha
 ```
 build-pipeline-plugin
 copyartifact
