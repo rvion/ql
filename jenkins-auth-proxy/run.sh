@@ -1,3 +1,4 @@
+
 docker run -it --rm -p "4000:4000" -p "8081:8081" rvion/auth-proxy \
     --discovery-url=https://auth.rvion.fr/auth/realms/master/.well-known/openid-configuration \
     --listen=:4000 \
