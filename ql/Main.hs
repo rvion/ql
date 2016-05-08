@@ -16,8 +16,6 @@ import Network.Wai.Middleware.RequestLogger(logStdoutDev)
 -- import Servant.Server(serve)
 -- import Data.Proxy(Proxy)
 
-bug
-
 main :: IO ()
 main = run 8080 app where
   app :: Application

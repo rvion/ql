@@ -1,3 +1,0 @@
-ls
-pwd
-stack install
