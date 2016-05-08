@@ -16,6 +16,16 @@ bin/keycloak-proxy \
 
 ### jenkins options
 
+docker run \
+  --restart always \
+  --name keycloak \
+  --link postgres:postgres  \
+  -e POSTGRES_DATABASE=keycloak  \
+  -e POSTGRES_USER=keycloak \
+  -e POSTGRES_PASSWORD=password \
+  -p "80:8080" \
+  -d rvion/auth:0.19.1
+
 
 ```
 build-pipeline-plugin
