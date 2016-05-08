@@ -1,10 +1,11 @@
+set -eux
 docker run -i --rm \
   -v /cache/stack:/root/.stack \
   -v /cache/bin:/root/.local/bin \
   -v $(pwd)/ql:/app \
   -w /app \
   fpco/stack-build \
-  ls
+  stack install
 
 # stack path
 #
