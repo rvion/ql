@@ -19,6 +19,7 @@ bin/keycloak-proxy \
 
 okok
 bad
+baz
 ```
 build-pipeline-plugin
 copyartifact
