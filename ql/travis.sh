@@ -5,7 +5,7 @@ docker run -i --rm \
   --volumes-from r-ci_ci-worker_data_1 \
   -w $(pwd)/ql \
   fpco/stack-build \
-  build.sh
+  ./build.sh
 
 # stack path
 #
