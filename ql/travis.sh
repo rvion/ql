@@ -2,7 +2,7 @@ set -eux
 docker run -i --rm \
   -v /cache/stack:/root/.stack \
   -v /cache/bin:/root/.local/bin \
-  --volumes-from ci_jenkins_jenkins-data_1 \
+  --volumes-from r-ci_jenkins_jenkins-data_1 \
   -w $(pwd)/ql \
   fpco/stack-build \
   ls
