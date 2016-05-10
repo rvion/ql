@@ -17,10 +17,18 @@
     - 80:8080 (port 80 visible, port 8080 dans le container)
     - 50000:50000 (au cas où on veuille des swarms)
   - volumes:
-    - /var/jenkins_home/:/var/jenkins_home/
+    - /jenkins/:/var/jenkins_home/
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
 
+install libsystemd-journal-dev (
+  apt-get install libsystemd-journal-dev -yq
+  apt-get install libsystemd-journal0 -yq
+
+  )
+add "github plugin"
+create github token
+add github rsa
 
 2. setup auth on github
 
