@@ -1,9 +1,8 @@
 set -eux
-
 VERSION=0.1
+ls ql
 
 echo Building:
-ls ql
 docker run -i --rm \
   -v /cache/stack:/root/.stack \
   --volumes-from r-ci_ci-worker_data_1 \

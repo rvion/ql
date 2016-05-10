@@ -1,5 +1,25 @@
 readme.md
 
+intro
+crise du logiciel
+speak about paas
+automatisation
+
+1. install rancher
+2. setup auth on github
+
+speak about nosql
+https://www.google.fr/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q=never%20use%20mongodb&oq=never%20use%20mongo&aqs=chrome.1.69i57j0l5.5991j0j7
+3. spawn postgres
+
+speak about auth, problem openidconnet (descente de police, etc.)
+4. spawn keycloak ha
+
+
+
+
+
+
 https://github.com/gambol99/keycloak-proxy
 bin/keycloak-proxy \
     --discovery-url=https://auth.rvion.fr/auth/realms/master \
