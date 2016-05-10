@@ -1,11 +1,27 @@
-readme.md
-
-intro
-crise du logiciel
-speak about paas
-automatisation
+## TP
 
 1. install rancher
+
+  - [ ] ssh into your first machine
+  isntall docker
+    - [ ] apt-get update -qq
+    - [ ] apt-get install -yq curl htop
+    - [ ] curl -sSL https://get.docker.com/ | sh
+     (voir https://get.docker.com/)
+
+  - [ ] log in your rancher setup
+  - [ ] secure your rancher with github
+
+- setup jenkins (https://hub.docker.com/_/jenkins/)
+  - ports:
+    - 80:8080 (port 80 visible, port 8080 dans le container)
+    - 50000:50000 (au cas où on veuille des swarms)
+  - volumes:
+    - /var/jenkins_home/:/var/jenkins_home/
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
+
+
 2. setup auth on github
 
 speak about nosql
