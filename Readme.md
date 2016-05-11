@@ -1,41 +1,37 @@
-readme.md
+## TP - App4 Qualité Logicielle - ~2H
 
-https://github.com/gambol99/keycloak-proxy
-bin/keycloak-proxy \
-    --discovery-url=https://auth.rvion.fr/auth/realms/master \
-    --client-id=jenkins \
-    --secret=<SECRET> \
-    --listen=127.0.0.1:3000 \
-    --redirection-url=http://127.0.0.3000 \
-    --refresh-sessions=true \
-    --encryption-key=AgXa7xRcoClDEU0ZDSH4X0XhL5Qy2Z2j \
-    --upstream=http://127.0.0.1:80 \
-    --resource="uri=/admin|methods=GET|roles=test1,test2" \
-    --resource="uri=/backend|roles=test1"
+- [ ] make ssh key (ssh-keygen -f yourname -N "") (be sure to include __your name__)
+- [ ] go on https://cloud.digitalocean.com/droplets/new?size=2gb&region=lon1&options=private_networking,ipv6
+- [ ] choose a region not too far, ubuntu 14/04 x64 (defaut), 20$/mo, ipv6 et private networking (mais pas backups),
+- [ ] copy pub key (cat yourname.pub | pbcopy)
+- [ ] add your ssh pub key
+- [ ] choose a simple name __with your name__
+- [ ] create the machine
+- [ ] log in the machine ssh -i yourname root@ipofthemachine
+- [ ] install docker with (`curl -sSL https://get.docker.com/ | sh`) (if no curl, install curl with `apt-get update -q && apt-get install curl`)
+- [ ] launch rancher (http://docs.rancher.com/rancher/latest/en/installing-rancher/installing-server/) -> (`sudo docker run -d --restart=always -p 80:8080 rancher/server`)
+- [ ] setup dommain name with Rémi
+- [ ] login rancher (go to the ip of your machine in web browser)
+- [ ] setup security via github (see instructions on your rancher)
+- [ ] create 3 hosts on the same geographic Region, with enable private networking
 
 
-### jenkins options
 
-```
-build-pipeline-plugin
-copyartifact
-parameterized-trigger
-git-parameter
-mask-passwords
-```
+### auth
 
-http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/
-https://hub.docker.com/r/evarga/jenkins-slave/~/dockerfile/
-evarga/jenkins-slave
+docker run --name postgres \
+  -e POSTGRES_DATABASE=keycloak \
+  -e POSTGRES_USER=keycloak \
+  -e POSTGRES_PASSWORD=password \
+  -e POSTGRES_ROOT_PASSWORD=password \
+  -d postgres
 
-https://docs.docker.com/engine/examples/running_ssh_service/
-
-apt-get update && apt-get install -y openssh-server
-mkdir /var/run/sshd
-echo 'root:pass' | chpasswd
-sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-/usr/sbin/sshd -D
-### build command:
-
-https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin#GitHubPlugin-GithubPlugin
+docker run \
+  --restart always \
+  --name keycloak \
+  --link postgres:postgres  \
+  -e POSTGRES_DATABASE=keycloak  \
+  -e POSTGRES_USER=keycloak \
+  -e POSTGRES_PASSWORD=password \
+  -p "80:8080" \
+  -d rvion/auth:0.19.1
