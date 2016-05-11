@@ -1,5 +1,5 @@
 set -eux
-VERSION=0.1
+VERSION=0.2
 ls ql
 
 echo Building:

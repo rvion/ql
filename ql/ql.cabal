@@ -14,13 +14,21 @@ cabal-version:       >=1.10
 
 executable ql
   main-is:             Main.hs
+  other-modules:       Base
   default-language:    Haskell2010
+  default-extensions:  DataKinds DeriveGeneric TypeOperators
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , wai-extra
                      , warp
                      , wai
                      , servant
+                     , servant-lucid
+                     , servant-swagger
+                     , servant-js
+                     , bytestring
+                     , swagger2
+                     , text
                      , servant-server
                      , transformers
                      , aeson
