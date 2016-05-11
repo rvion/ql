@@ -59,7 +59,14 @@ ci:
    - [ ] hit `build now`
    - [ ] ...
    - [ ] profit
-   
+
+#### 4/3
+
+ - [ ] check memory consumption, check container running on rancher
+ - [ ] go on rancher > infrastructure
+ - [ ] ci_1 >  click '...' > click "execute shell"
+ - [ ] docker login at least once
+
 ------
 
 pour info, l'image rvion/jenkins-with-docker a été construite avec cette commande:
@@ -71,5 +78,5 @@ docker build -t rvion/jenkins-with-docker .
 puis poussé sur docker hub avec cette commande
 
 ```shell
-docker push -t rvion/jenkins-with-docker .
+docker push rvion/jenkins-with-docker
 ```

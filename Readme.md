@@ -14,24 +14,7 @@
 - [ ] login rancher (go to the ip of your machine in web browser)
 - [ ] setup security via github (see instructions on your rancher)
 - [ ] create 3 hosts on the same geographic Region, with enable private networking
-- [ ] setup jenkins (https://hub.docker.com/_/jenkins/)
-  - ports:
-    - 80:8080 (port 80 visible, port 8080 dans le container)
-    - 50000:50000 (au cas où on veuille des swarms)
-  - volumes:
-    - /jenkins/:/var/jenkins_home/
-    - /var/run/docker.sock:/var/run/docker.sock
-    - /usr/bin/docker:/usr/bin/docker
 
-install libsystemd-journal-dev (
-  apt-get install libsystemd-journal-dev -yq
-  apt-get install libsystemd-journal0 -yq
-  lxc
-
-  )
-add "github plugin"
-create github token
-add github rsa
 
 
 ### auth
