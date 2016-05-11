@@ -23,7 +23,6 @@ executable ql
                      , warp
                      , wai
                      , servant
-                     , servant-lucid
                      , servant-swagger
                      , servant-js
                      , bytestring
