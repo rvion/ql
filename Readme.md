@@ -1,18 +1,20 @@
-## TP
+## TP - App4 Qualité Logicielle - ~2H
 
-1. install rancher
-
-  - [ ] ssh into your first machine
-  isntall docker
-    - [ ] apt-get update -qq
-    - [ ] apt-get install -yq curl htop
-    - [ ] curl -sSL https://get.docker.com/ | sh
-     (voir https://get.docker.com/)
-
-  - [ ] log in your rancher setup
-  - [ ] secure your rancher with github
-
-- setup jenkins (https://hub.docker.com/_/jenkins/)
+- [ ] make ssh key (ssh-keygen -f yourname -N "") (be sure to include __your name__)
+- [ ] go on https://cloud.digitalocean.com/droplets/new?size=2gb&region=lon1&options=private_networking,ipv6
+- [ ] choose a region not too far, ubuntu 14/04 x64 (defaut), 20$/mo, ipv6 et private networking (mais pas backups),
+- [ ] copy pub key (cat yourname.pub | pbcopy)
+- [ ] add your ssh pub key
+- [ ] choose a simple name __with your name__
+- [ ] create the machine
+- [ ] log in the machine ssh -i yourname root@ipofthemachine
+- [ ] install docker with (`curl -sSL https://get.docker.com/ | sh`) (if no curl, install curl with `apt-get update -q && apt-get install curl`)
+- [ ] launch rancher (http://docs.rancher.com/rancher/latest/en/installing-rancher/installing-server/) -> (`sudo docker run -d --restart=always -p 80:8080 rancher/server`)
+- [ ] setup dommain name with Rémi
+- [ ] login rancher (go to the ip of your machine in web browser)
+- [ ] setup security via github (see instructions on your rancher)
+- [ ] create 3 hosts on the same geographic Region, with enable private networking
+- [ ] setup jenkins (https://hub.docker.com/_/jenkins/)
   - ports:
     - 80:8080 (port 80 visible, port 8080 dans le container)
     - 50000:50000 (au cas où on veuille des swarms)
@@ -24,41 +26,22 @@
 install libsystemd-journal-dev (
   apt-get install libsystemd-journal-dev -yq
   apt-get install libsystemd-journal0 -yq
+  lxc
 
   )
 add "github plugin"
 create github token
 add github rsa
 
-2. setup auth on github
 
-speak about nosql
-https://www.google.fr/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q=never%20use%20mongodb&oq=never%20use%20mongo&aqs=chrome.1.69i57j0l5.5991j0j7
-3. spawn postgres
+### auth
 
-speak about auth, problem openidconnet (descente de police, etc.)
-4. spawn keycloak ha
-
-
-
-
-
-
-https://github.com/gambol99/keycloak-proxy
-bin/keycloak-proxy \
-    --discovery-url=https://auth.rvion.fr/auth/realms/master \
-    --client-id=jenkins \
-    --secret=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdGClJvxJp00Osfv31gMudEvEQlXQVZ6l9vFvziyCqjWvEzTmZxTsr/vZn/xpoce3TGAW3mHHQXKaHfOLfM7PjCJQeAsawM526HRZI8PQRyQA+5ccEttpiINn/aGi79XhG82mHAEqYYszr1gvza4xaLMoT8wdbYmZIqJRrIvNsg3mLBaLSImEFND/TNFwyuVl0PdRvLWy5EnE1+HLZVRXBOipEx+4icyNRoYaltNHr5z8KZwo8CozJrkALqVtSFoeyVua3FXoFelHgW6+kGBjyM2mlYN9GuRrc0bvJ5h1/RH2qPZVIAjSqZyQjQJ/vMGU2lJeJn+TueKDkMjm7qccwIDAQAB \
-    --listen=:80 \
-    --redirection-url=jenkins:8080 \
-    --refresh-sessions=true \
-    --encryption-key=AgXa7xRcoClDEU0ZDSH4X0XhL5Qy2Z2j \
-    --resource="uri=/" \
-
-    --upstream=http://127.0.0.1:80 \
-
-
-### jenkins options
+docker run --name postgres \
+  -e POSTGRES_DATABASE=keycloak \
+  -e POSTGRES_USER=keycloak \
+  -e POSTGRES_PASSWORD=password \
+  -e POSTGRES_ROOT_PASSWORD=password \
+  -d postgres
 
 docker run \
   --restart always \
@@ -69,28 +52,3 @@ docker run \
   -e POSTGRES_PASSWORD=password \
   -p "80:8080" \
   -d rvion/auth:0.19.1
-
-
-```
-build-pipeline-plugin
-copyartifact
-parameterized-trigger
-git-parameter
-mask-passwords
-```
-
-http://nathanleclaire.com/blog/2014/07/12/10-docker-tips-and-tricks-that-will-make-you-sing-a-whale-song-of-joy/
-https://hub.docker.com/r/evarga/jenkins-slave/~/dockerfile/
-evarga/jenkins-slave
-
-https://docs.docker.com/engine/examples/running_ssh_service/
-
-apt-get update && apt-get install -y openssh-server
-mkdir /var/run/sshd
-echo 'root:pass' | chpasswd
-sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-/usr/sbin/sshd -D
-### build command:
-
-https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin#GitHubPlugin-GithubPlugin

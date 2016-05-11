@@ -5,7 +5,7 @@ ls ql
 echo Building:
 docker run -i --rm \
   -v /cache/stack:/root/.stack \
-  -v /ci/:/var/jenkins_home/ \
+  -v /jenkins/:/var/jenkins_home/ \
   -w $(pwd)/ql \
   fpco/stack-build \
   stack install --local-bin-path $(pwd)/ql-prod

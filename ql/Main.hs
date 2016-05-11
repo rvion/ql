@@ -12,9 +12,10 @@ import Network.Wai.Handler.Warp(run)
 import Network.Wai(Application)
 import Servant
 import Network.Wai.Middleware.RequestLogger(logStdoutDev)
--- import Servant.JS()
--- import Servant.Server(serve)
--- import Data.Proxy(Proxy)
+
+type API = "position" :> Capture "x" Int :> Capture "y" Int :> Get '[JSON] Position
+      :<|> "hello" :> QueryParam "name" String :> Get '[JSON] HelloMessage
+      :<|> "marketing" :> ReqBody '[JSON] ClientInfo :> Post '[JSON] Email
 
 main :: IO ()
 main = run 8080 app where
@@ -47,10 +48,6 @@ server = position
                     ++ " products? Give us a visit!"
 
 type Handler = ExceptT ServantErr IO
-
-type API = "position" :> Capture "x" Int :> Capture "y" Int :> Get '[JSON] Position
-      :<|> "hello" :> QueryParam "name" String :> Get '[JSON] HelloMessage
-      :<|> "marketing" :> ReqBody '[JSON] ClientInfo :> Post '[JSON] Email
 
 api :: Proxy API
 api = Proxy
