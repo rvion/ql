@@ -1,3 +1,5 @@
 *.hi
 *.o
 app-demo
+ql-prod/ql
+docs

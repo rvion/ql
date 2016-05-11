@@ -38,7 +38,7 @@ reproduire ça dans rancher via l'ui dans un nouveau stack appelé "ci"
 ci:
   image: rvion/jenkins-with-docker
   volumes:
-  - /jenkins/:/var/jenkins_home/
+  - /ci-data/:/var/jenkins_home/
   - /var/run/docker.sock:/var/run/docker.sock
   - /usr/bin/docker:/usr/bin/docker
   ports:
