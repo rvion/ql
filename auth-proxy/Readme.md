@@ -1,4 +1,4 @@
-adapt this stuff
+adapt this stuff:
 
 ```shell
 docker run -it --rm -p "8843:8843" rvion/keycloak-proxy:v1.0.6 \
