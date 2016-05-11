@@ -59,6 +59,7 @@ ci:
    - [ ] hit `build now`
    - [ ] ...
    - [ ] profit
+   
 ------
 
 pour info, l'image rvion/jenkins-with-docker a été construite avec cette commande:
